@@ -29,13 +29,10 @@ def readIntervalBoard(path_in, filename, version, path_out, fname_newSnow):
     fname = os.path.basename(filename)  # get just the filename (could write with PathLib, but not a priority now)
     pitID = filename.stem.split('_')[0] # splits the filename with delimeter "_" and saves the first
     dateString = filename.stem.split('_')[1] # splits filename and saves the second
-    subString = fname.rstrip(".xlsx")
-    # boardPath = path_out + 'boards/' + subString + '/'
-    # if not os.path.exists(boardPath):
-    #     os.makedirs(boardPath)
+    subString = fname.rstrip(".xlsx") # strips the ".xlsx" off the filename
 
     # open excel file
-    xl = pd.ExcelFile(filename)
+    xl = pd.ExcelFile(filename) # opens xlxs workbook
 
     # location / pit name
     d = pd.read_excel(xl, sheet_name=0, usecols='B')
@@ -43,11 +40,11 @@ def readIntervalBoard(path_in, filename, version, path_out, fname_newSnow):
     Site = d['Location:'][2]  # grab site name
     PitID = d['Location:'][4][:6]  # grab pit name
     d = pd.read_excel(xl, sheet_name=0, usecols='L')
-    UTME = d['Surveyors:'][2]
+    UTME = d['Surveyors:'][2] # grab UTME
     d = pd.read_excel(xl, sheet_name=0, usecols='Q')
-    UTMN = d['Unnamed: 16'][2]
+    UTMN = d['Unnamed: 16'][2] # grab UTMN
     d = pd.read_excel(xl, sheet_name=0, usecols='X')
-    UTMzone = d['Unnamed: 23'][2] #for northern hemisphere
+    UTMzone = d['Unnamed: 23'][2] # for northern hemisphere
     # convert to Lat/Lon
     LAT = round(utm.to_latlon(UTME, UTMN, UTMzone, "Northern")[0], 5) #tuple output, save first
     LON = round(utm.to_latlon(UTME, UTMN, UTMzone, "Northern")[1], 5) #tuple output, save second
@@ -58,14 +55,14 @@ def readIntervalBoard(path_in, filename, version, path_out, fname_newSnow):
 
     # date and time
     d = pd.read_excel(xl, sheet_name=0, usecols='X')
-    pit_time = d['Unnamed: 23'][4]
+    pit_time = d['Unnamed: 23'][4] # grab snow pit time
     d = pd.read_excel(xl, sheet_name=0, usecols='S')
-    pit_date = d['Unnamed: 18'][4]
+    pit_date = d['Unnamed: 18'][4] # grab snow pit date
 
     # combine date and time into one datetime variable, and format
     pit_datetime=datetime.datetime.combine(pit_date, pit_time)
     pit_datetime_str=pit_datetime.strftime('%Y-%m-%dT%H:%M')
-    s=str(Site) + ',' +  pit_datetime_str + ',' + str(UTMzone)+hsphere + ',' + str(UTME) + ',' + str(UTMN) + ',' + str(TotalDepth)
+    s = str(Site) + ',' +  pit_datetime_str + ',' + str(UTMzone)+hsphere + ',' + str(UTME) + ',' + str(UTMN) + ',' + str(TotalDepth)
 
     # create minimal header info for other files
     column = ['# Location', '# Site', '# PitID', '# Date/Local Time',
@@ -79,42 +76,66 @@ def readIntervalBoard(path_in, filename, version, path_out, fname_newSnow):
     rIx = (d.iloc[:,0] == 'Interval board measurements\nUse SWE tube').idxmax() #
     d = d.iloc[rIx+4:, 2:].reset_index(drop=True) #four down from the interval board section
     d.columns = ['HN (cm)', 'SWE (mm)']
-    d2=d.iloc[0:3].values
-    d2=np.array(d2.flatten(order='F'))#, dtype=float) #flatten array to match csv style
-    d3=d['HN (cm)'].iloc[3] #evidence of melt (y/n)
-    d4= np.append(d2, d3) #combine HN and SWE array with Evidence of Melt
-    columns = ['# HN (cm) A', 'HN (cm) B', 'HN (cm) C',
-                'SWE (mm) A', 'SWE (mm) B', 'SWE (mm) C',
+    d2 = d.iloc[0:3].values
+    d2 = np.array(d2.flatten(order='F').astype(float))# order=Fortran style,  dtype=float) #flatten array to match csv style
+    d3 = d['HN (cm)'].iloc[3] #evidence of melt (y/n)
+    d4 = np.append(d2, d3) #combine HN and SWE array with Evidence of Melt
+
+    # calculate averages and insert into numpy array
+    d4 = np.insert(d4, 3, np.nanmean(d2[:3]).round(1)) #inserts AVG. HN (cm) in 3rd position; d2[:3] = first 3 values
+    d4 = np.insert(d4, 7, np.nanmean(d2[3:]).round(1)) #inserts AVG. SWE (mm) in 7th position; d2[3:] = last 3 values
+
+    # comments: pull from 'weather comments' box
+    d = pd.read_excel(xl, sheet_name=0, usecols='B:M')
+    rIx = (d.iloc[:,0] == 'Weather:').idxmax() #locate 'Weather:' cell in spreadsheet (row Index)
+    d = d.loc[rIx:,:].reset_index(drop=True) # subset dataframe from 'Weather:' cell down to bottom, and reset index (not always fixed due to extra rows in above measurements)
+    Weather = str(d['Location:'][1]) # grab Weather comment box
+
+    if "IB: " in Weather:
+        Comments = Weather.split('IB: ')[1] # splits at 'IB: ' and saves 2nd return
+        if "PD: " in Comments:
+            Comments = Comments.split('PD: ')[0] # splits at 'PD: ' and saves first (removes any perimeter depth comments)
+    else:
+        Comments = None
+
+    columns = ['HN (cm) A', 'HN (cm) B', 'HN (cm) C', 'AVG HN (cm)',
+                'SWE (mm) A', 'SWE (mm) B', 'SWE (mm) C', 'AVG SWE (mm)',
                 'Evidence of Melt']
-    # ~~~ ADD CODE BLOCK HERE ~~~: grab weather box, split at IB and save the last, with if statement for any PD comments -- Megan is still implementing this to the main script.
-    newSnow=pd.DataFrame(d4.reshape(-1, len(d4)), columns=columns)
+
+    newSnow = pd.DataFrame(d4.reshape(-1, len(d4)), columns=columns)
+    newSnow['Comments'] = Comments
+    newSnow.fillna('NaN', inplace=True)
     dfNewSnow = pd.concat([df, newSnow], axis=1)
-    dfNewSnow.to_csv(fname_newSnow, sep=',', index=False, mode='a', na_rep='NaN', header=False)
-    print('wrote: .../' + fname_newSnow.split('/')[-1])
+    dfNewSnow.to_csv(fname_newSnow, sep=',', index=False, mode='a', na_rep='nan', header=False)
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 if __name__ == "__main__":
+
     # static variables
-    version = 'v01'
+    version = 'v01' # working version
     hsphere = 'N' # northern hemisphere
+
     # paths
-    path_in = Path('/Users/cvuyovic/Documents/PythonScripts/Interval_boards/data/all_pitSheets/')
-    # path_in = Path('/Users/cvuyovic/Documents/PythonScripts/Interval_boards/data/test/')
-    path_out = '/Users/cvuyovic/Documents/PythonScripts/Interval_boards/data/parameter_output_csv/'
+    path_in = Path('/Users/meganmason491/Documents/snowex/2020/timeseries/qaqc_pits/pits_csv_edited/workbooks/')
+    path_out = '/Users/meganmason491/Documents/snowex/2020/timeseries/qaqc_pits/pits_csv_edited/'
+
     # create output filename
     fname_newSnow = path_out + '/SNEX20_TS_IB_newSnow_' + version +'.csv'
+
     # create header for files
-    column = ['# Location', '# Site', '# PitID', '# Date/Local Time',
-         '# UTM Zone', '# Easting', '# Northing', '# Latitude', '# Longitude',
-         '# HN (cm) A', 'HN (cm) B', 'HN (cm) C', 'SWE (mm) A', 'SWE (mm) B',
-         'SWE (mm) C', 'Evidence of Melt']
+    column = ['Location', 'Site', 'PitID', 'Date/Local Time',
+         'UTM Zone', 'Easting', 'Northing', 'Latitude', 'Longitude',
+         'HN (cm) A', 'HN (cm) B', 'HN (cm) C', 'AVG HN (cm)', 'SWE (mm) A', 'SWE (mm) B',
+         'SWE (mm) C', 'AVG SWE (mm)', 'Evidence of Melt', 'Comments']
+
     # add header to data file
     df = pd.DataFrame(columns=column)
-    df.to_csv(fname_newSnow, sep=',', index=False)
+    df.to_csv(fname_newSnow, sep=',', index=False, na_rep='nan')
 
     # loop over all pit sheets
     for filename in path_in.rglob('*.xlsx'):
-        print(filename.name)
+        print('running file: .../', filename.name)
         r = readIntervalBoard(path_in, filename, version, path_out, fname_newSnow)
 
     print('..... Script is Complete !  .....')
