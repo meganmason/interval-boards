@@ -23,22 +23,19 @@ whereas the files to start with the coordinates will vary, but that is OKAY to g
 That parameter named assigned to the Interval Board dataset = newSnow
 '''
 
-def readIntervalBoard(path_in, filename, version, path_out):
+def readIntervalBoard(path_in, filename, version, path_out, fname_newSnow):
 
     # filename variables
     fname = os.path.basename(filename)  # get just the filename (could write with PathLib, but not a priority now)
     pitID = filename.stem.split('_')[0] # splits the filename with delimeter "_" and saves the first
     dateString = filename.stem.split('_')[1] # splits filename and saves the second
     subString = fname.rstrip(".xlsx")
-    boardPath = path_out + 'boards/' + subString + '/'
-    if not os.path.exists(boardPath):
-        os.makedirs(boardPath)
+    # boardPath = path_out + 'boards/' + subString + '/'
+    # if not os.path.exists(boardPath):
+    #     os.makedirs(boardPath)
 
     # open excel file
     xl = pd.ExcelFile(filename)
-
-    # create individual output filename
-    fname_newSnow = boardPath + '/SNEX20_TS_IB_' + dateString + '_' + pitID + '_newSnow_' + version +'.csv'
 
     # location / pit name
     d = pd.read_excel(xl, sheet_name=0, usecols='B')
@@ -68,25 +65,14 @@ def readIntervalBoard(path_in, filename, version, path_out):
     # combine date and time into one datetime variable, and format
     pit_datetime=datetime.datetime.combine(pit_date, pit_time)
     pit_datetime_str=pit_datetime.strftime('%Y-%m-%dT%H:%M')
-    s=str(Site) + ',' + str(UTMzone)+hsphere + ',' +  pit_datetime_str + ',' + str(UTME) + ',' + str(UTMN) + ',' + str(TotalDepth)
+    s=str(Site) + ',' +  pit_datetime_str + ',' + str(UTMzone)+hsphere + ',' + str(UTME) + ',' + str(UTMN) + ',' + str(TotalDepth)
 
     # create minimal header info for other files
-    index = ['# Location', '# Site', '# PitID', '# Date/Local Time',
+    column = ['# Location', '# Site', '# PitID', '# Date/Local Time',
          '# UTM Zone', '# Easting', '# Northing', '# Latitude', '# Longitude']
-    column = ['value']
-    df = pd.DataFrame(index=index, columns=column)
-    df['value'][0] = Location
-    df['value'][1] = str(Site)
-    df['value'][2] = str(PitID)
-    df['value'][3] = pit_datetime_str
-    df['value'][4] = str(UTMzone)+hsphere # Only for Grand Mesa 2020!! - '12N'
-    df['value'][5] = UTME
-    df['value'][6] = UTMN
-    df['value'][7] = LAT
-    df['value'][8] = LON
+    df = pd.DataFrame(columns=column)
+    df.loc[0] = [Location, str(Site), str(PitID), pit_datetime_str, str(UTMzone)+hsphere, UTME, UTMN, LAT, LON]
 
-    # add minimal header to each data file
-    df.to_csv(fname_newSnow, sep=',', header=False)
 
     # get new snow (interval board data)
     d = pd.read_excel(xl, sheet_name=0, usecols='B:E')
@@ -102,7 +88,8 @@ def readIntervalBoard(path_in, filename, version, path_out):
                 'Evidence of Melt']
     # ~~~ ADD CODE BLOCK HERE ~~~: grab weather box, split at IB and save the last, with if statement for any PD comments -- Megan is still implementing this to the main script.
     newSnow=pd.DataFrame(d4.reshape(-1, len(d4)), columns=columns)
-    newSnow.to_csv(fname_newSnow, sep=',', index=False, mode='a', na_rep='NaN')
+    dfNewSnow = pd.concat([df, newSnow], axis=1)
+    dfNewSnow.to_csv(fname_newSnow, sep=',', index=False, mode='a', na_rep='NaN', header=False)
     print('wrote: .../' + fname_newSnow.split('/')[-1])
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,12 +98,23 @@ if __name__ == "__main__":
     version = 'v01'
     hsphere = 'N' # northern hemisphere
     # paths
-    path_in = Path('/Users/meganmason491/Google Drive/SnowEx-2020-timeseries-pits/timeseries_pitbook_sheets_EDIT/FOR_EDIT/')
-    path_out = '/Users/meganmason491/Google Drive/SnowEx-2020-timeseries-pits/parameter_output_csv/'
+    path_in = Path('/Users/cvuyovic/Documents/PythonScripts/Interval_boards/data/all_pitSheets/')
+    # path_in = Path('/Users/cvuyovic/Documents/PythonScripts/Interval_boards/data/test/')
+    path_out = '/Users/cvuyovic/Documents/PythonScripts/Interval_boards/data/parameter_output_csv/'
+    # create output filename
+    fname_newSnow = path_out + '/SNEX20_TS_IB_newSnow_' + version +'.csv'
+    # create header for files
+    column = ['# Location', '# Site', '# PitID', '# Date/Local Time',
+         '# UTM Zone', '# Easting', '# Northing', '# Latitude', '# Longitude',
+         '# HN (cm) A', 'HN (cm) B', 'HN (cm) C', 'SWE (mm) A', 'SWE (mm) B',
+         'SWE (mm) C', 'Evidence of Melt']
+    # add header to data file
+    df = pd.DataFrame(columns=column)
+    df.to_csv(fname_newSnow, sep=',', index=False)
 
     # loop over all pit sheets
     for filename in path_in.rglob('*.xlsx'):
         print(filename.name)
-        r = readIntervalBoard(path_in, filename, version, path_out)
+        r = readIntervalBoard(path_in, filename, version, path_out, fname_newSnow)
 
     print('..... Script is Complete !  .....')
