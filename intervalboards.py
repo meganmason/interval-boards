@@ -126,11 +126,12 @@ if __name__ == "__main__":
     year_to_process = 2020 # which year do you want to process? (code will break if campaign data goes decemeber - spring...)
 
     # paths
-    path_in = Path('/Users/meganmason491/Documents/snowex/2020/timeseries/qaqc_pits/pits_csv_edited/workbooks/')
+    # path_in = Path('/Users/meganmason491/Documents/snowex/2020/timeseries/qaqc_pits/pits_csv_edited/workbooks/')
+    path_in = Path('/Users/meganmason491/Documents/snowex/2020/timeseries/qaqc_pits/pits_csv_edited/pits/')
     path_out = '/Users/meganmason491/Documents/snowex/2020/timeseries/qaqc_pits/pits_csv_edited/'
 
     # create output filename
-    fname_newSnow = path_out + '/SNEX20_TS_IB_newSnow_' + version +'.csv'
+    fname_newSnow = path_out + '/SNEX20_TS_IB_Summary_newSnow_' + version +'.csv'
 
     # empty DataFrame
     df = pd.DataFrame()
@@ -140,7 +141,8 @@ if __name__ == "__main__":
 
 
     # loop over all pit sheets
-    for filename in path_in.rglob('*.xlsx'):
+    # for filename in path_in.rglob('*.xlsx'):
+    for filename in path_in.rglob('*pitSheet*'):
         print('running file: .../', filename.name)
         r = readIntervalBoard(path_in, filename, year_to_process, version, path_out, fname_newSnow)
 
