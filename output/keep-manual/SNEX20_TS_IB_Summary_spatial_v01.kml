@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="SNEX20_TS_IB_Summary_spatial_v01" id="SNEX20_TS_IB_Summary_spatial_v01">
+	<SimpleField name="State" type="string"></SimpleField>
+	<SimpleField name="Location" type="string"></SimpleField>
+	<SimpleField name="Site" type="string"></SimpleField>
+	<SimpleField name="Latitude" type="float"></SimpleField>
+	<SimpleField name="Longitude" type="float"></SimpleField>
+</Schema>
+<Folder><name>SNEX20_TS_IB_Summary_spatial_v01</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CA</SimpleData>
+		<SimpleData name="Location">American River Basin</SimpleData>
+		<SimpleData name="Site">Caples Lake</SimpleData>
+		<SimpleData name="Latitude">38.71027</SimpleData>
+		<SimpleData name="Longitude">-120.04187</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-120.04187,38.71027</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CA</SimpleData>
+		<SimpleData name="Location">Sagehen Creek</SimpleData>
+		<SimpleData name="Site">Forest</SimpleData>
+		<SimpleData name="Latitude">39.42955</SimpleData>
+		<SimpleData name="Longitude">-120.24211</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-120.24211,39.42955</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CA</SimpleData>
+		<SimpleData name="Location">Sagehen Creek</SimpleData>
+		<SimpleData name="Site">Open</SimpleData>
+		<SimpleData name="Latitude">39.43036</SimpleData>
+		<SimpleData name="Longitude">-120.23982</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-120.23982,39.43036</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CA</SimpleData>
+		<SimpleData name="Location">Sagehen Creek</SimpleData>
+		<SimpleData name="Site">Tower 4</SimpleData>
+		<SimpleData name="Latitude">39.42216</SimpleData>
+		<SimpleData name="Longitude">-120.29898</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-120.29898,39.42216</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CO</SimpleData>
+		<SimpleData name="Location">Cameron Pass</SimpleData>
+		<SimpleData name="Site">Joe Wright</SimpleData>
+		<SimpleData name="Latitude">40.53262</SimpleData>
+		<SimpleData name="Longitude">-105.88783</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-105.88783,40.53262</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CO</SimpleData>
+		<SimpleData name="Location">Cameron Pass</SimpleData>
+		<SimpleData name="Site">Michigan River</SimpleData>
+		<SimpleData name="Latitude">40.51864</SimpleData>
+		<SimpleData name="Longitude">-105.89193</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-105.89193,40.51864</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CO</SimpleData>
+		<SimpleData name="Location">East River</SimpleData>
+		<SimpleData name="Site">Gothic</SimpleData>
+		<SimpleData name="Latitude">38.95925</SimpleData>
+		<SimpleData name="Longitude">-106.99054</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-106.99054,38.95925</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CO</SimpleData>
+		<SimpleData name="Location">East River</SimpleData>
+		<SimpleData name="Site">Irwin Barn</SimpleData>
+		<SimpleData name="Latitude">38.88812</SimpleData>
+		<SimpleData name="Longitude">-107.10796</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-107.10796,38.88812</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CO</SimpleData>
+		<SimpleData name="Location">Grand Mesa</SimpleData>
+		<SimpleData name="Site">County Line Open</SimpleData>
+		<SimpleData name="Latitude">39.03052</SimpleData>
+		<SimpleData name="Longitude">-108.03213</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-108.03213,39.03052</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CO</SimpleData>
+		<SimpleData name="Location">Grand Mesa</SimpleData>
+		<SimpleData name="Site">Skyway Open</SimpleData>
+		<SimpleData name="Latitude">39.04423</SimpleData>
+		<SimpleData name="Longitude">-108.06202</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-108.06202,39.04423</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CO</SimpleData>
+		<SimpleData name="Location">Niwot Ridge</SimpleData>
+		<SimpleData name="Site">C1</SimpleData>
+		<SimpleData name="Latitude">40.03317</SimpleData>
+		<SimpleData name="Longitude">-105.54616</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-105.54616,40.03317</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CO</SimpleData>
+		<SimpleData name="Location">Niwot Ridge</SimpleData>
+		<SimpleData name="Site">Saddle</SimpleData>
+		<SimpleData name="Latitude">40.05497</SimpleData>
+		<SimpleData name="Longitude">-105.59065</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-105.59065,40.05497</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CO</SimpleData>
+		<SimpleData name="Location">Senator Beck</SimpleData>
+		<SimpleData name="Site">Senator Beck</SimpleData>
+		<SimpleData name="Latitude">37.90706</SimpleData>
+		<SimpleData name="Longitude">-107.72627</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-107.72627,37.90706</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">CO</SimpleData>
+		<SimpleData name="Location">Senator Beck</SimpleData>
+		<SimpleData name="Site">Swamp Angel</SimpleData>
+		<SimpleData name="Latitude">37.90714</SimpleData>
+		<SimpleData name="Longitude">-107.71121</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-107.71121,37.90714</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">Mores Creek Summit</SimpleData>
+		<SimpleData name="Latitude">43.93209</SimpleData>
+		<SimpleData name="Longitude">-115.66576</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.66576,43.93209</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">K-5</SimpleData>
+		<SimpleData name="Latitude">43.94673</SimpleData>
+		<SimpleData name="Longitude">-115.66909</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.66909,43.94673</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">K-4</SimpleData>
+		<SimpleData name="Latitude">43.94712</SimpleData>
+		<SimpleData name="Longitude">-115.67213</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.67213,43.94712</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">K-3</SimpleData>
+		<SimpleData name="Latitude">43.94805</SimpleData>
+		<SimpleData name="Longitude">-115.67506</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.67506,43.94805</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">K-2</SimpleData>
+		<SimpleData name="Latitude">43.94737</SimpleData>
+		<SimpleData name="Longitude">-115.67682</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.67682,43.94737</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">K-1</SimpleData>
+		<SimpleData name="Latitude">43.94855</SimpleData>
+		<SimpleData name="Longitude">-115.67831</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.67831,43.94855</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">TOW-3</SimpleData>
+		<SimpleData name="Latitude">43.95254</SimpleData>
+		<SimpleData name="Longitude">-115.67988</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.67988,43.95254</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">TOW-2</SimpleData>
+		<SimpleData name="Latitude">43.95248</SimpleData>
+		<SimpleData name="Longitude">-115.68159</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.68159,43.95248</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">TOW-1</SimpleData>
+		<SimpleData name="Latitude">43.95496</SimpleData>
+		<SimpleData name="Longitude">-115.68155</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.68155,43.95496</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">Bogus Lower</SimpleData>
+		<SimpleData name="Latitude">43.75701</SimpleData>
+		<SimpleData name="Longitude">-116.09086</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-116.09086,43.75701</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">Bogus Upper</SimpleData>
+		<SimpleData name="Latitude">43.75881</SimpleData>
+		<SimpleData name="Longitude">-116.09019</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-116.09019,43.75881</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">LDP Open</SimpleData>
+		<SimpleData name="Latitude">43.73705</SimpleData>
+		<SimpleData name="Longitude">-116.12181</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-116.12181,43.73705</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">LDP Tree</SimpleData>
+		<SimpleData name="Latitude">43.73635</SimpleData>
+		<SimpleData name="Longitude">-116.12055</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-116.12055,43.73635</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">Banner Open</SimpleData>
+		<SimpleData name="Latitude">44.30455</SimpleData>
+		<SimpleData name="Longitude">-115.23601</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.23601,44.30455</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">ID</SimpleData>
+		<SimpleData name="Location">Boise River Basin</SimpleData>
+		<SimpleData name="Site">Banner Snotel</SimpleData>
+		<SimpleData name="Latitude">44.30362</SimpleData>
+		<SimpleData name="Longitude">-115.23457</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-115.23457,44.30362</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">NM</SimpleData>
+		<SimpleData name="Location">Jemez River</SimpleData>
+		<SimpleData name="Site">BA Flux Tower</SimpleData>
+		<SimpleData name="Latitude">35.88859</SimpleData>
+		<SimpleData name="Longitude">-106.53185</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-106.53185,35.88859</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#SNEX20_TS_IB_Summary_spatial_v01">
+		<SimpleData name="State">NM</SimpleData>
+		<SimpleData name="Location">Jemez River</SimpleData>
+		<SimpleData name="Site">HQ Met Station</SimpleData>
+		<SimpleData name="Latitude">35.85791</SimpleData>
+		<SimpleData name="Longitude">-106.52137</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-106.52137,35.85791</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>
